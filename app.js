@@ -1,4 +1,5 @@
 const express=require('express');
+require('dotenv').config();
 const bcrypt = require('bcrypt');
 const path=require('path');
 const session = require('express-session');
@@ -10,7 +11,7 @@ const sampleHisaabs=require('./dummydata')
 const sampleUsers=require('./dummyusers')
 
 
-
+const port=process.env.PORT || 3000;
 const app=express();
 app.set('view engine','ejs');
 app.use(express.static(path.join(__dirname,"public")));
@@ -19,7 +20,7 @@ app.use(express.urlencoded({extended:true}));
 app.set('views', path.join(__dirname, 'views')); // <-- this is good practice
 
 app.use(session({
-  secret: 'pass', 
+  secret: process.env.session_secret, 
   resave: false,
   saveUninitialized: false,
 }));
@@ -44,7 +45,7 @@ app.post('/register', async (req, res) => {
   if (error) {
     return res.status(400).send(error.message);
   }
-console.log('Joi validation result:', { error, value });
+
   
   const { name: validName, email: validEmail, password: validPassword } = value;
 
@@ -260,4 +261,4 @@ app.get("/logout", (req, res) => {
 });
 
 
-app.listen(3000);
+app.listen(port);
