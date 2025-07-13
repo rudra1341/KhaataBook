@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khaatabook - Dashboard</title>
+  <link rel="stylesheet" href="/css/homepagestyle.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">Khaatabook</div>
+    <nav>
+      <a href="/homepage">Home</a>
+      <a href="/create">Create New Hisaab</a>
+      <a href="/logout">Logout</a>
+
+      
+    </nav>
+  </header>
+
+ <main class="dashboard-container">
+  <!-- Filters -->
+  <form method="GET" action="/homepage" class="filter-bar">
+  <button type="button"><%= filterLabel || "Filters 🔧" %></button>
+ 
+
+  <select name="sortOrder" onchange="this.form.submit()">
+    <option value="newest" <%= sortOrder === 'newest' ? 'selected' : '' %>>Newest First</option>
+    <option value="oldest" <%= sortOrder === 'oldest' ? 'selected' : '' %>>Oldest First</option>
+  </select>
+
+  <input
+    type="date"
+    name="selectedDate"
+    value="<%= selectedDate || '' %>"
+    onchange="this.form.submit()" />
+    <!-- Reset Filters Button -->
+  <a href="/homepage" class="reset-btn">Reset Filters 🔄</a>
+</form>
+
+
+</main>
+
+
+    <!-- Cards -->
+    <div class="hisaab-list">
+  <% hisaabs.forEach(function(hisaab) { %>
+    <div class="hisaab-card">
+      <div class="badges">
+        <% if (hisaab.encrypt) { %>
+          <span class="badge encrypted">🔒 Encrypted</span>
+        <% } else { %>
+          <span class="badge available">✔️ Available</span>
+        <% } %>
+      </div>
+      <p>Created on: <%= new Date(hisaab.createdAt).toLocaleDateString() %></p>
+
+      <h3><%= hisaab.title %></h3>
+      <% if(hisaab.encrypt){ %>
+  <a href="/hisaab/<%= hisaab._id %>">🔒 View with Passcode</a>
+<% } else { %>
+  <a href="/hisaab/<%= hisaab._id %>">View Hisaab</a>
+<% } %>
+    </div>
+  <% }); %>
+</div>
+

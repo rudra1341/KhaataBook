@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Hisaab</title>
+  <link rel="stylesheet" href="/css/newhisaab.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <script>
+    function togglePasscodeField() {
+      const encryptCheckbox = document.getElementById("encrypt");
+      const passcodeField = document.getElementById("passcode-field");
+
+      if (encryptCheckbox.checked) {
+        passcodeField.style.display = "block";
+      } else {
+        passcodeField.style.display = "none";
+      }
+    }
+
+    
+    window.onload = togglePasscodeField;
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo">Khaatabook</div>
+    <nav><a href="/homepage">Home</a>
+    <a href="/logout">Logout</a></nav>
+    
+  </header>
+
+  <main class="create-container">
+    <h2>Edit Hisaab</h2>
+    <form class="create-form" action="/edithisaab/<%= hisaab._id %>" method="POST">
+      <input type="text" name="title" value="<%= hisaab.title %>" required />
+      <textarea name="description" rows="6" required><%= hisaab.description %></textarea>
+
+      <div class="options">
+        <div>
+          <input type="checkbox" name="encrypt" id="encrypt" onchange="togglePasscodeField()" <%= hisaab.encrypt ? 'checked' : '' %> />
+          <label for="encrypt">Encrypt this file</label>
+        </div>
+
+        <div>
+          <input type="checkbox" name="shareable" id="shareable" <%= hisaab.shareable ? 'checked' : '' %> />
+          <label for="shareable">Shareable file?</label>
+        </div>
+
+        <div id="passcode-field">
+          <input type="text" name="passcode" placeholder="Passcode" value="<%= hisaab.passcode %>" />
+        </div>
+
+        <div>
+          <input type="checkbox" name="editable" id="editable" <%= hisaab.editable ? 'checked' : '' %> />
+          <label for="editable">Edit permissions</label>
+        </div>
+      </div>
+
+      <button type="submit">Save Changes</button>
+    </form>
+  </main>
+</body>
+</html>

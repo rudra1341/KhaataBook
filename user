@@ -1,0 +1,92 @@
+const dummyUsers = [
+  {
+    name: "Ravi Sharma",
+    email: "ravi.sharma@example.com",
+    password: "password123",
+    confirmPassword: "password123"
+  },
+  {
+    name: "Priya Mehta",
+    email: "priya.mehta@example.com",
+    password: "mysecret1",
+    confirmPassword: "mysecret1"
+  },
+  {
+    name: "Aman Verma",
+    email: "aman.verma@example.com",
+    password: "letmein99",
+    confirmPassword: "letmein99"
+  },
+  {
+    name: "Neha Yadav",
+    email: "neha.yadav@example.com",
+    password: "secure123",
+    confirmPassword: "secure123"
+  },
+  {
+    name: "Deepak Singh",
+    email: "deepak.singh@example.com",
+    password: "deepak01",
+    confirmPassword: "deepak01"
+  },
+  {
+    name: "Anjali Chauhan",
+    email: "anjali.chauhan@example.com",
+    password: "anjali123",
+    confirmPassword: "anjali123"
+  },
+  {
+    name: "Karan Sethi",
+    email: "karan.sethi@example.com",
+    password: "karan@321",
+    confirmPassword: "karan@321"
+  },
+  {
+    name: "Sneha Kapoor",
+    email: "sneha.kapoor@example.com",
+    password: "sneha456",
+    confirmPassword: "sneha456"
+  },
+  {
+    name: "Vikram Thakur",
+    email: "vikram.thakur@example.com",
+    password: "vikram123",
+    confirmPassword: "vikram123"
+  },
+  {
+    name: "Isha Agarwal",
+    email: "isha.agarwal@example.com",
+    password: "ishaPass1",
+    confirmPassword: "ishaPass1"
+  },
+  {
+    name: "Arjun Desai",
+    email: "arjun.desai@example.com",
+    password: "arjunpass",
+    confirmPassword: "arjunpass"
+  },
+  {
+    name: "Meena Rani",
+    email: "meena.rani@example.com",
+    password: "meenapass",
+    confirmPassword: "meenapass"
+  },
+  {
+    name: "Tushar Jindal",
+    email: "tushar.jindal@example.com",
+    password: "tushar789",
+    confirmPassword: "tushar789"
+  },
+  {
+    name: "Ritika Jain",
+    email: "ritika.jain@example.com",
+    password: "ritika2023",
+    confirmPassword: "ritika2023"
+  },
+  {
+    name: "Mohit Rawat",
+    email: "mohit.rawat@example.com",
+    password: "mohitrawat",
+    confirmPassword: "mohitrawat"
+  }
+];

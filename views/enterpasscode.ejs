@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enter Passcode</title>
+</head>
+<body>
+  <h2>This Hisaab is Encrypted</h2>
+  <% if (error) { %>
+    <p style="color: red;"><%= error %></p>
+  <% } %>
+  <form action="/hisaab/<%= hisaabId %>/unlock" method="POST">
+    <label>Enter Passcode:</label>
+    <input type="password" name="passcode" required>
+    <button type="submit">Unlock</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,111 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eee;
+}
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #000;
+}
+
+.theme-btn {
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.dashboard-container {
+  padding: 2rem;
+}
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.hisaab-list {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hisaab-card {
+  width: 250px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.hisaab-card:hover {
+  transform: translateY(-5px);
+}
+
+.badges {
+  margin-bottom: 0.5rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.badge.encrypted {
+  background-color: #007bff;
+}
+
+.badge.available {
+  background-color: #28a745;
+}
+
+.date {
+  font-size: 0.75rem;
+  color: gray;
+}
+
+.hisaab-card h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.hisaab-card a {
+  font-size: 0.85rem;
+  color: #007bff;
+  text-decoration: none;
+}
+.reset-btn {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 1rem 0.5rem ;
+  border-radius: 6rem;
+  text-decoration: none;
+  margin-left:1;
+
+  border-color: #000;
+}

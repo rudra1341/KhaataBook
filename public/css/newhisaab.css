@@ -1,0 +1,70 @@
+body {
+  font-family: 'Montserrat';
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+ header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* This vertically centers children */
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eee;
+  background-color: white;
+}
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+.create-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 1rem;
+}
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.create-form input[type="text"],
+.create-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+.create-form textarea {
+  resize: vertical;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.options div {
+  flex: 1 1 45%;
+}
+
+.create-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}

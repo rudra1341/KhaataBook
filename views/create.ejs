@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create New Hisaab</title>
+  <link rel="stylesheet" href="/css/newhisaab.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<script>
+  function togglePasscodeField() {
+    const encryptCheckbox = document.getElementById("encrypt");
+    const passcodeField = document.getElementById("passcode-field");
+
+    if (encryptCheckbox.checked) {
+      passcodeField.style.display = "block";
+    } else {
+      passcodeField.style.display = "none";
+    }
+  }
+
+  // On page load, trigger check in case form is repopulated
+  window.onload = togglePasscodeField;
+</script>
+<body>
+  <header>
+    <div class="logo">Khaatabook</div>
+    <nav>
+      <a href="/homepage">Home</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+
+  <main class="create-container">
+    <h2>Create New Hisaab</h2>
+    <form action="/create" method="POST" class="create-form">
+      <input type="text" name="title" placeholder="Shopping Hisaab, Ghar ka Kharch..." required />
+      <textarea name="description" placeholder="Daal, Aata, Cheeni" rows="6" required></textarea>
+
+      <div class="options">
+  <div>
+    <input type="checkbox" name="encrypt" id="encrypt" onchange="togglePasscodeField()" />
+    <label for="encrypt">Encrypt this file</label>
+  </div>
+
+  <div>
+    <input type="checkbox" name="shareable" id="shareable" />
+    <label for="shareable">Shareable file?</label>
+  </div>
+
+  <div id="passcode-field" style="display: none;">
+    <input type="text" name="passcode" placeholder="Passcode" />
+  </div>
+
+  <div>
+    <input type="checkbox" name="editable" id="editable" />
+    <label for="editable">Edit permissions</label>
+  </div>
+</div>
+
+
+      <button type="submit">Create New Hisaab</button>
+    </form>
+  </main>
+</body>
+</html>

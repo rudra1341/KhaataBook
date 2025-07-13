@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Hisaab</title>
+  <link rel="stylesheet" href="/css/viewhisab.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">Khaatabook</div>
+    <nav>
+      <a href="/homepage">Home</a>
+      <a href="/create">Create New Hisaab</a>
+      <a href="/logout">Logout</a>
+      
+      
+    </nav>
+  </header>
+
+  <main class="hisaab-view">
+    <div class="badge-bar"><%if(hisaab.encrypt){%>
+      <span class="badge encrypted">🔒 Encrypted</span>
+      <span class="badge hidden">🙈</span>
+      <% } else { %>
+          <span class="badge available">✔️ Available</span>
+        <% } %>
+     <% if (hisaab.shareable) { %>
+  <span class="badge link" onclick="copyShareLink('<%= hisaab._id %>')">🔗 Share as a link</span>
+<% } %>
+
+      <form action="/delete/<%= hisaab._id %>" method="POST" onsubmit="return confirm('Delete this Hisaab?');">
+  <button type="submit" class="btn delete">Delete</button>
+</form>
+    <%if (hisaab.editable){%>  
+      <a href="/edithisaab/<%= hisaab._id %>" class="btn edit">Edit</a><%}%>
+    </div>
+
+    <p class="created-date">
+  Created on: <%= new Date(hisaab.createdAt).toLocaleDateString() %>
+</p>
+
+    <h2><%=hisaab.title%></h2>
+    <p class="description">
+      <%=hisaab.description%>
+    </p>
+  </main>
+</body>
+<script>
+  function copyShareLink(hisaabId) {
+    const link = `${window.location.origin}/share/${hisaabId}`;
+    navigator.clipboard.writeText(link)
+      .then(() => alert("Shareable link copied to clipboard!"))
+      .catch(err => alert("Failed to copy link."));
+  }
+</script>
+</html>
