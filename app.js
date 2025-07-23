@@ -7,7 +7,6 @@ const mongooseconnection=require("./config/mongoose");
 const {user,validateModel,validateLogin}=require('./models/user');
 const hisaab = require('./models/hisab');
 const { name } = require('ejs');
-const sampleHisaabs=require('./dummydata')
 const sampleUsers=require('./dummyusers')
 
 
