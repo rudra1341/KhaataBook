@@ -24,6 +24,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
 }));
+
 //route protection
 function isAuthenticated(req, res, next) {
   if (req.session.userId) {
@@ -120,7 +121,8 @@ app.post("/create",isAuthenticated, async (req, res, next) => {
       encrypt: !!encrypt,
       shareable: !!shareable,
       passcode,
-      editable: !!editable
+      editable: !!editable,
+      userId:req.session.userId
     });
 
    
@@ -140,7 +142,7 @@ app.post("/create",isAuthenticated, async (req, res, next) => {
 app.get("/homepage",isAuthenticated,async(req,res)=>{
     const sortOrder=req.query.sortOrder ||"newest";
     const selectedDate=req.query.selectedDate;
-    let query={}
+    let query={userId: req.session.userId}
     
     
     if (selectedDate) {
@@ -166,7 +168,9 @@ app.get("/homepage",isAuthenticated,async(req,res)=>{
 app.get("/hisaab/:id",isAuthenticated, async (req, res) => {
   const hisaabData = await hisaab.findById(req.params.id);
 
-  
+  if (!hisaabData || hisaabData.userId.toString() !== req.session.userId) {
+    return res.status(403).send("Unauthorized");
+  }
   if (!hisaabData.encrypt) {
     return res.render("viewhisaab", { hisaab: hisaabData });
   }
@@ -179,6 +183,9 @@ app.get("/hisaab/:id",isAuthenticated, async (req, res) => {
 app.post("/hisaab/:id/unlock",isAuthenticated, async (req, res) => {
   const { passcode } = req.body;
   const hisaabData = await hisaab.findById(req.params.id);
+  if (!hisaabData || hisaabData.userId.toString() !== req.session.userId) {
+  return res.status(403).send("Unauthorized");
+}
 
   if (hisaabData.passcode === passcode) {
     return res.render("viewhisaab", { hisaab: hisaabData });
@@ -203,6 +210,9 @@ app.post("/delete/:id",isAuthenticated,async(req,res)=>{
 app.get('/edithisaab/:id',isAuthenticated, async (req, res) => {
   try {
     const hisaabdata = await hisaab.findById(req.params.id);
+    if (!hisaabdata || hisaabdata.userId.toString() !== req.session.userId) {
+  return res.status(403).send("Unauthorized");
+}
     res.render('edithisaab', { hisaab:hisaabdata }); 
   } catch (err) {
     console.error('Error loading edit form:', err);
@@ -232,6 +242,9 @@ app.post("/edithisaab/:id",isAuthenticated, async (req, res) => {
 app.get("/share/:id",isAuthenticated, async (req, res) => {
   try {
     const hisaabData = await hisaab.findById(req.params.id);
+    if (!hisaabData || hisaabData.userId.toString() !== req.session.userId) {
+  return res.status(403).send("Unauthorized");
+}
 
     if (!hisaabData) {
       return res.status(404).send("Hisaab not found");
